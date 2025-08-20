@@ -70,7 +70,7 @@ LearnHub is a complete MERN stack online course platform where students can expl
 ### Quick Start
 ```bash
 # Clone repo
-git clone https://github.com/your-username/learnhub.git
+git clone https://github.com/Maulik6351/learnHub.git
 cd learnhub
 
 # Install backend deps
