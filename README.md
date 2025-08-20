@@ -75,104 +75,28 @@ LearnHub is a complete MERN stack online course platform where students can expl
 - **MongoDB (local or Atlas)**
 - **npm or yarn**
 
-### Quick Start
+### 🚀 Quick Start
+# Clone repo
+git clone https://github.com/Maulik6351/LearnHub.git
+cd LearnHub
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Maulik6351/LearnHub.git
-   cd LearnHub
-   ```
+# Install backend dependencies
+npm install
 
-2. **Install backend dependencies**
-   ```bash
-   npm install
-   ```
+# Move into client folder and install frontend dependencies
+cd client
+npm install
+cd ..
 
-3. **Install frontend dependencies**
-   ```bash
-   cd client
-   npm install
-   cd ..
-   ```
+# Setup environment variables
+cp config.example.env config.env   # or create manually
 
-4. **Environment Setup**
-   
-   Create a `config.env` file in the root directory:
-   ```env
-   MONGODB_URI=mongodb://localhost:27017/learnhub
-   JWT_SECRET=your_jwt_secret_key_here
-   NODE_ENV=development
-   PORT=5000
-   CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-   CLOUDINARY_API_KEY=your_cloudinary_api_key
-   CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-   ```
+# Run backend
+npm run dev
 
-5. **Database Setup**
-   
-   Make sure MongoDB is running on your system or update the `MONGODB_URI` to point to your MongoDB instance.
-
-## 🚀 Running the Application
-
-### Development Mode
-
-1. **Start both frontend and backend concurrently**
-   ```bash
-   npm run dev
-   ```
-
-2. **Run backend only**
-   ```bash
-   npm run server
-   ```
-
-3. **Run frontend only**
-   ```bash
-   npm run client
-   ```
-
-### Production Mode
-
-1. **Build the frontend**
-   ```bash
-   npm run build
-   ```
-
-2. **Start the production server**
-   ```bash
-   npm start
-   ```
-
----
-
-## 📡 API Endpoints
-
-### Authentication
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Login user
-- `GET /api/auth/me` - Get current user
-
-### Courses
-- `GET /api/courses` - Get all courses (with filtering)
-- `GET /api/courses/:id` - Get single course
-- `POST /api/courses` - Create a course (Instructor/Admin)
-- `PUT /api/courses/:id` - Update a course (Instructor/Admin)
-- `DELETE /api/courses/:id` - Delete a course (Instructor/Admin)
-- `POST /api/courses/:id/rate` - Rate a course
-
-### Users
-- `GET /api/users/profile` - Get user profile
-- `PUT /api/users/profile` - Update user profile
-- `GET /api/users/enrolled-courses` - Get user's enrolled courses
-- `GET /api/users/wishlist` - Get user's wishlist
-- `POST /api/users/wishlist/:courseId` - Add course to wishlist
-- `DELETE /api/users/wishlist/:courseId` - Remove course from wishlist
-
-### Enrollments
-- `POST /api/enrollments/enroll` - Enroll in a course
-- `GET /api/enrollments` - Get user's enrollments
-- `PUT /api/enrollments/:enrollmentId/lessons/:lessonId/complete` - Mark lesson as completed
-- `GET /api/enrollments/:enrollmentId/progress` - Get enrollment progress
+# Run frontend (inside client folder)
+cd client
+npm start
 
 ---
 
@@ -212,147 +136,4 @@ LearnHub/
 └── package.json              # Backend dependencies
 ```
 
----
 
-## 🗄️ Database Models
-
-### User Model
-```javascript
-{
-  name: String,
-  email: String (unique),
-  password: String (hashed),
-  role: String (student/instructor),
-  avatar: String,
-  enrolledCourses: [Course references],
-  wishlist: [Course references],
-  createdAt: Date
-}
-```
-
-### Course Model
-```javascript
-{
-  title: String,
-  description: String,
-  category: String,
-  price: Number,
-  image: String,
-  instructor: User reference,
-  duration: String,
-  level: String (Beginner/Advanced),
-  lessons: [{
-    title: String,
-    description: String,
-    duration: String,
-    isPreview: Boolean
-  }],
-  requirements: [String],
-  learningOutcomes: [String],
-  enrolledStudents: [User references],
-  averageRating: Number,
-  totalRatings: Number,
-  ratings: [Rating objects],
-  isPublished: Boolean,
-  tags: [String]
-}
-```
-
-### Enrollment Model
-```javascript
-{
-  user: User reference,
-  course: Course reference,
-  enrolledAt: Date,
-  completedLessons: [Lesson references],
-  progress: Number (percentage),
-  lastAccessed: Date
-}
-```
-
----
-
-## 🔧 Available Scripts
-
-```json
-{
-  "start": "node server.js",
-  "server": "nodemon server.js",
-  "client": "npm start --prefix client",
-  "dev": "concurrently \"npm run server\" \"npm run client\"",
-  "install-client": "cd client && npm install",
-  "build": "npm run build --prefix client",
-  "heroku-postbuild": "npm run install-client && npm run build"
-}
-```
-
----
-
-## 🚀 Deployment
-
-The project is configured for deployment with:
-- **Heroku deployment** scripts
-- **Production build** configuration
-- **Static file serving** for React build
-- **Environment variable** management
-
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
-## 🆘 Support
-
-For support, email support@learnhub.com or create an issue in the repository.
-
----
-
-## 🙏 Acknowledgments
-
-- Font Awesome for icons
-- React community for excellent documentation
-- MongoDB for the database solution
-- Express.js team for the web framework
-- Redux Toolkit for state management
-
----
-
-## 🌟 Features in Detail
-
-### Course Management
-- **6 Sample Courses** included with comprehensive content
-- **Basic and Advanced levels** for different skill sets
-- **Multiple categories**: HTML, CSS, JavaScript
-- **Rich content**: Lessons, requirements, learning outcomes
-- **Professional images** for each course
-
-### User Experience
-- **Intuitive navigation** with React Router
-- **Responsive design** for all devices
-- **Real-time updates** with Redux state management
-- **Toast notifications** for user feedback
-- **Protected routes** for authenticated users
-
-### Security Features
-- **JWT token management** with automatic refresh
-- **Password hashing** with bcryptjs
-- **Input validation** with express-validator
-- **Role-based access control**
-- **Secure API endpoints**
-
----
-
-**Built with ❤️ using the MERN Stack**
