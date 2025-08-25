@@ -14,7 +14,7 @@ It allows **students** to browse, enroll, and track progress in courses, while *
 ### Quick Start
 ```bash
 # Clone repo
-git clone https://github.com/your-username/learnhub.git
+git clone https://github.com/maulikg11/learnhub.git
 cd learnhub
 
 # Install backend deps
